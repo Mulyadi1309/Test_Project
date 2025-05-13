@@ -55,7 +55,10 @@ class CustomerController extends Controller
 
         $token = $customer->createToken('CustomerToken')->accessToken;
 
-        return response()->json(['token' => $token]);
+        return response()->json([
+            'message' => 'Berhasil Login',
+            'token' => $token,
+        ]);
 
     }
 }
