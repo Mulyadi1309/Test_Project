@@ -27,7 +27,7 @@ class CustomerController extends Controller
 
         $customer = $this->customerService->register($validated);
 
-        return response()->json($customer, 201);
+        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
     public function login(Request $request)
@@ -40,12 +40,13 @@ class CustomerController extends Controller
         $customer = Customer::where('email', $credentials['email'])->first();
 
         if (!$customer || !Hash::check($credentials['password'], $customer->password)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return back()->with('error', 'Email atau password salah.');
         }
 
+        // Simpan token jika ingin digunakan (optional)
         $token = $customer->createToken('CustomerToken')->accessToken;
 
         return response()->json(['token' => $token]);
+
     }
 }
-

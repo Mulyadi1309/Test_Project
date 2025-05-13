@@ -1,52 +1,59 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar - Laravel App</title>
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Daftar Akun</h2>
+<body class="bg-light">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header text-center">
+                    <h4 class="mb-0">Registrasi Akun</h4>
+                </div>
+                <div class="card-body p-4">
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
 
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
 
-        <label for="name">Nama:</label>
-        <input type="text" name="name" id="name" required value="{{ old('name') }}">
-        @error('name')
-            <div>{{ $message }}</div>
-        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required>
+                            <label for="name">Nama Lengkap</label>
+                            @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
 
-        <br><br>
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}" required>
+                            <label for="email">Email</label>
+                            @error('email') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required value="{{ old('email') }}">
-        @error('email')
-            <div>{{ $message }}</div>
-        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                            <label for="password">Password</label>
+                            @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
 
-        <br><br>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="phone_number" class="form-control" id="phone" placeholder="Nomor HP" value="{{ old('phone_number') }}" required>
+                            <label for="phone">Nomor HP</label>
+                            @error('phone_number') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        @error('password')
-            <div>{{ $message }}</div>
-        @enderror
-
-        <br><br>
-
-        <label for="phone_number">Nomor Telepon:</label>
-        <input type="text" name="phone_number" id="phone_number" required value="{{ old('phone_number') }}">
-        @error('phone_number')
-            <div>{{ $message }}</div>
-        @enderror
-
-        <br><br>
-
-        <button type="submit">Daftar</button>
-    </form>
-
-    <br>
-    <a href="{{ route('login') }}">Sudah punya akun? Masuk disini</a>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Daftar</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Sudah punya akun? <a href="{{ route('login') }}">Login disini</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

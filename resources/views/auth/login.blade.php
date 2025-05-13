@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Laravel App</title>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Masuk ke Akun</h2>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Login</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        @if (session('error'))
+                            <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                        @endif
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required value="{{ old('email') }}">
-        @error('email')
-            <div>{{ $message }}</div>
-        @enderror
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
 
-        <br><br>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        @error('password')
-            <div>{{ $message }}</div>
-        @enderror
+                            <div class="form-floating mb-3">
+                                <input type="email" name="email" class="form-control" id="email"
+                                    placeholder="Email" value="{{ old('email') }}" required>
+                                <label for="email">Email</label>
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
 
-        <br><br>
+                            <div class="form-floating mb-3">
+                                <input type="password" name="password" class="form-control" id="password"
+                                    placeholder="Password" required>
+                                <label for="password">Password</label>
+                                @error('password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
 
-        <button type="submit">Masuk</button>
-    </form>
-
-    <br>
-    <a href="{{ route('register') }}">Belum punya akun? Daftar disini</a>
+                            <button type="submit" class="btn btn-success w-100 py-2">Login</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small>Belum punya akun? <a href="{{ route('register') }}">Daftar disini</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
