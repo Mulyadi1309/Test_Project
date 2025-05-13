@@ -26,7 +26,7 @@
 
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-
+                            
                             <div class="form-floating mb-3">
                                 <input type="email" name="email" class="form-control" id="email"
                                     placeholder="Email" value="{{ old('email') }}" required>
@@ -45,7 +45,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-success w-100 py-2">Login</button>
+                            <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
                         </form>
                     </div>
                     <div class="card-footer text-center">

@@ -16,6 +16,11 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -28,6 +33,11 @@ class CustomerController extends Controller
         $customer = $this->customerService->register($validated);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
     }
 
     public function login(Request $request)

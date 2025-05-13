@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'customer' => [
+        'api' => [
             'driver' => 'passport',
-            'provider' => 'customers',
+            'provider' => 'customers', // GANTI dari 'users' ke 'customers'
         ],
     ],
 
