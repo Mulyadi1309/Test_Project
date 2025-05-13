@@ -16,17 +16,19 @@
                         <h4 class="mb-0">Login</h4>
                     </div>
                     <div class="card-body p-4">
-                        @if (session('error'))
-                            <div class="alert alert-danger text-center">{{ session('error') }}</div>
-                        @endif
+                        <div class="text-center">
+                            @if (session('error'))
+                                <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                            @endif
 
-                        @if (session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
-                        @endif
-
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
+                        </div>
+                        
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            
+
                             <div class="form-floating mb-3">
                                 <input type="email" name="email" class="form-control" id="email"
                                     placeholder="Email" value="{{ old('email') }}" required>

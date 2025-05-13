@@ -23,7 +23,8 @@
                             <p class="mb-1 fw-semibold">Tanggal Berakhir</p>
                             <p class="mb-1">2024 - 10 - 10</p>
                             <a href="#" class="text-decoration-none text-primary" data-bs-toggle="modal"
-                                data-bs-target="#perpanjangModal">Perpanjang</a>
+                                data-bs-target="#perpanjangModal">Perpanjang
+                            </a>
                         </div>
                         <div>
                             <p class="mb-1 fw-semibold">Domain</p>

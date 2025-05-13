@@ -27,5 +27,18 @@ class CustomerService
         ]);
 
         return $customer;
+
+        $channel = new WAChannel();
+
+        $status = $channel->send([
+        'to' => $customer->phone_number,
+        'message' => 'Halo, ini pesan percobaan!',
+        ]);
+
+        if ($status === 'success') {
+            return 'Pesan berhasil dikirim via WA';
+        } else {
+            return 'Pesan gagal dikirim via WA';
+        }
     }
 }

@@ -53,7 +53,6 @@ class CustomerController extends Controller
             return back()->with('error', 'Email atau password salah.');
         }
 
-        // Simpan token jika ingin digunakan (optional)
         $token = $customer->createToken('CustomerToken')->accessToken;
 
         return response()->json(['token' => $token]);
